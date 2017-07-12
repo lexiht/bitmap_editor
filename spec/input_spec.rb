@@ -17,7 +17,6 @@ describe Input do
           'L'=> [1, 3, 'A'],
           'S'=> []
         }
-
         expect(described_class.parse(file_path)).to eq(commands)
       end
     end
