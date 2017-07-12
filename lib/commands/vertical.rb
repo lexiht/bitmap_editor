@@ -10,6 +10,7 @@ class Vertical
         colour = argument[-1]
         draw_vertical(column, row_min, row_max, colour, bitmap)
       end
+      bitmap
     end
 
     private
@@ -21,8 +22,8 @@ class Vertical
         bitmap.matrix.each_with_index do |array, index|
           array[column] = colour if index >= row_min && index <= row_max
         end
-        bitmap
       end
+      bitmap
     end
   end
 end

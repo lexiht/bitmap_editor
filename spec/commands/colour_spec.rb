@@ -29,6 +29,11 @@ describe Colour do
       it 'outputs error message when coordinate is String' do
         expect { described_class.apply(['A','B','C'], old_bitmap) }.to output(message).to_stdout
       end
+
+      it 'outputs error message when coordinate is out of range' do
+        message = "Coordinate is out of range\n"
+        expect { described_class.apply([3, 4,'C'], old_bitmap) }.to output(message).to_stdout
+      end
     end
   end
 end
