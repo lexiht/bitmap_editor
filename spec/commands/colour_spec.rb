@@ -1,31 +1,34 @@
 require './lib/commands/colour.rb'
+require './lib/bitmap.rb'
 
 describe Colour do
+  let(:old_bitmap) { Bitmap.new(1, 2) }
+  
   describe '.apply' do
-    it 'replace O to C at coordinate 1, 1' do
-      old_matrix = Bitmap.new(1, 2)
-      new_matrix = Bitmap.new(1, 2)
-      new_matrix.matrix = [['C'], ['O']]
-      expect(described_class.apply([1, 1, 'C'], old_matrix)).to eq(new_matrix)
+    context 'correct coordinate' do
+      new_bitmap = Bitmap.new(1, 2)
+
+      it 'replace O to C at coordinate 1, 1' do
+        new_bitmap.matrix = [['C'], ['O']]
+        expect(described_class.apply([1, 1, 'C'], old_bitmap)).to eq(new_bitmap)
+      end
+
+      it 'replace O to C at coordinate 1, 2' do
+        new_bitmap.matrix = [['O'], ['C']]
+        expect(described_class.apply([1, 2, 'C'], old_bitmap)).to eq(new_bitmap)
+      end
     end
 
-    it 'replace O to C at coordinate 1, 2' do
-      old_matrix = Bitmap.new(1, 2)
-      new_matrix = Bitmap.new(1, 2)
-      new_matrix.matrix = [['O'], ['C']]
-      expect(described_class.apply([1, 2, 'C'], old_matrix)).to eq(new_matrix)
-    end
-
-    it 'outputs error message when no coordinate is provided' do
-      old_matrix = Bitmap.new(1, 2)
+    context 'incorrect coordinate' do
       message = "Invalid coordinate\n"
-      expect { described_class.apply(['C'], old_matrix) }.to output(message).to_stdout
-    end
 
-    it 'outputs error message when coordinate is String' do
-      old_matrix = Bitmap.new(1, 2)
-      message = "Invalid coordinate\n"
-      expect { described_class.apply(['A','B','C'], old_matrix) }.to output(message).to_stdout
+      it 'outputs error message when no coordinate is provided' do
+        expect { described_class.apply(['C'], old_bitmap) }.to output(message).to_stdout
+      end
+
+      it 'outputs error message when coordinate is String' do
+        expect { described_class.apply(['A','B','C'], old_bitmap) }.to output(message).to_stdout
+      end
     end
   end
 end
