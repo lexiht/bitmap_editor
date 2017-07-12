@@ -7,4 +7,8 @@ class Bitmap
     @height = height
     @matrix = Array.new(height, Array.new(width, 'O'))
   end
+
+  def ==(bitmap)
+    self.width == bitmap.width && self.height == bitmap.height
+  end
 end
