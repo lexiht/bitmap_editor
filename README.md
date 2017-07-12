@@ -29,17 +29,20 @@ Produce a Ruby 2.3 program that simulates a basic interactive bitmap editor. Bit
  `>bin/bitmap_editor examples/show.txt`
 
  * Input file
- `I 5 6
+ ```
+ I 5 6
  L 1 3 A
  V 2 3 6 W
  H 3 5 2 Z
- S`
+ S
+ ```
 
- * Expected Outputs
-
-`OOOOO
+ * Expected Output
+```
+OOOOO
 OOZZZ
 AWOOO
 OWOOO
 OWOOO
-OWOOO`
+OWOOO
+```
