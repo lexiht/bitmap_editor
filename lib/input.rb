@@ -1,7 +1,10 @@
 class Input
   class << self
     def parse(file_path)
-      return puts "please provide correct file" if file_path.nil? || !File.exists?(file_path)
+      if file_path.nil? || !File.exists?(file_path)
+        puts "Please provide correct file"
+        exit
+      end
       commands = {}
       File.open(file_path).each do |line|
         arguments = line.strip.split(' ')

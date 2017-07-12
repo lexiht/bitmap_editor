@@ -1,10 +1,12 @@
+require_relative 'input.rb'
+require_relative 'bitmap.rb'
+
 require './lib/commands/clear.rb'
 require './lib/commands/create.rb'
 require './lib/commands/colour.rb'
 require './lib/commands/horizontal.rb'
 require './lib/commands/vertical.rb'
 require './lib/commands/show.rb'
-require_relative'input.rb'
 
 class BitmapEditor
   def initialize
