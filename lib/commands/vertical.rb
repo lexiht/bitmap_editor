@@ -4,11 +4,15 @@ class Vertical
     row_min = argument[1] - 1
     row_max = argument[2] - 1
     colour = argument[-1]
-    bitmap.matrix.each_with_index do |array, index|
-      if index >= row_min && index <= row_max
-        array[column] = colour
+    if row_min < 0 || row_max + 1 > bitmap.row
+      puts 'The y coordinate is out of range'
+    else
+      bitmap.matrix.each_with_index do |array, index|
+        if index >= row_min && index <= row_max
+          array[column] = colour
+        end
       end
+      bitmap
     end
-    bitmap
   end
 end

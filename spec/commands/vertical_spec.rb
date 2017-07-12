@@ -16,5 +16,11 @@ describe Vertical do
       new_bitmap.matrix = [['O', 'O'], ['C', 'O'], ['C', 'O']]
       expect(described_class.apply([1, 2, 3, 'C'], old_bitmap)).to eq(new_bitmap)
     end
+
+    it 'outputs error message when y is out of range' do
+      old_bitmap = Bitmap.new(2, 3)
+      message = "The y coordinate is out of range\n"
+      expect { described_class.apply([1, 1, 4, 'C'], old_bitmap) }.to output(message).to_stdout
+    end
   end
 end
