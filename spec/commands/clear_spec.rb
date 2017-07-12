@@ -15,5 +15,10 @@ describe Clear do
       new_matrix = Bitmap.new(2, 2).matrix
       expect(described_class.apply([], old_matrix)).to eq(new_matrix)
     end
+
+    it 'outputs error message when bitmap is nil' do
+      message = "There's no image.\n"
+      expect { described_class.apply([], nil)}.to output(message).to_stdout
+    end
   end
 end

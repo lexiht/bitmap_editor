@@ -14,7 +14,7 @@ describe Create do
       expect(described_class.apply([3, 4], nil)).to eq(matrix)
     end
 
-    context 'returns error message' do
+    context 'outputs error message' do
       it 'when argument is an empty array' do
         message = "Wrong input [] after I\n"
         expect { described_class.apply([], nil) }.to output(message).to_stdout
