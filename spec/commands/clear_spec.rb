@@ -12,6 +12,7 @@ describe Clear do
     it 'reset the 2x2 matrix to original state' do
       old_matrix = Bitmap.new(2, 2)
       old_matrix.matrix = [['C', 'C'], ['C', 'C'], ['C', 'C']]
+      # why does the test still work?
       new_matrix = Bitmap.new(2, 2).matrix
       expect(described_class.apply([], old_matrix)).to eq(new_matrix)
     end
