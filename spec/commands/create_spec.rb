@@ -19,6 +19,11 @@ describe Create do
         message = "Wrong input [] after I\n"
         expect { described_class.apply([], nil) }.to output(message).to_stdout
       end
+
+      it 'returns error message when argument is an array of String' do
+        message = "Wrong input [\"A\", \"B\"] after I\n"
+        expect { described_class.apply(["A", "B"], nil) }.to output(message).to_stdout
+      end
     end
   end
 end
