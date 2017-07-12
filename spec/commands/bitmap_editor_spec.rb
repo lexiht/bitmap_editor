@@ -11,7 +11,7 @@ describe BitmapEditor do
     end
 
     it 'outputs the result of show.txt' do
-      file_path = './examples/show.txt'
+      file_path = './spec/fixtures/show.txt'
       message = "\"OOOOO\"\n\"OOZZZ\"\n\"AWOOO\"\n\"OWOOO\"\n\"OWOOO\"\n\"OWOOO\"\n"
       expect { editor.run(file_path) }.to output(message).to_stdout
     end
