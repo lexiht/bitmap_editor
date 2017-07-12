@@ -15,5 +15,11 @@ describe Colour do
       new_matrix.matrix = [['O'], ['C']]
       expect(described_class.apply([1, 2, 'C'], old_matrix)).to eq(new_matrix)
     end
+
+    it 'outputs error message when no coordinate is provided' do
+      old_matrix = Bitmap.new(1, 2)
+      message = "No coordinate is being provided\n"
+      expect { described_class.apply(['C'], old_matrix) }.to output(message).to_stdout
+    end
   end
 end
