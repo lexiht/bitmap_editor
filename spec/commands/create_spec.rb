@@ -14,15 +14,20 @@ describe Create do
       expect(described_class.apply([3, 4], nil)).to eq(matrix)
     end
 
-    context 'wrong arguments' do
-      it 'returns error message when argument is an empty array' do
+    context 'returns error message' do
+      it 'when argument is an empty array' do
         message = "Wrong input [] after I\n"
         expect { described_class.apply([], nil) }.to output(message).to_stdout
       end
 
-      it 'returns error message when argument is an array of String' do
+      it 'when argument is an array of String' do
         message = "Wrong input [\"A\", \"B\"] after I\n"
         expect { described_class.apply(["A", "B"], nil) }.to output(message).to_stdout
+      end
+
+      it 'when argument is the right length' do
+        message = "Wrong input [3] after I\n"
+        expect { described_class.apply([3], nil) }.to output(message).to_stdout
       end
     end
   end
