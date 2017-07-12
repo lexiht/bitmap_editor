@@ -20,6 +20,10 @@ class Bitmap
     self.matrix == bitmap.matrix
   end
 
+  def reset
+    matrix = Array.new(row) { Array.new(column, 'O') }
+  end
+
   private
 
   def dimensions(object = matrix)

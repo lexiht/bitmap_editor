@@ -3,7 +3,7 @@ class Clear
     if bitmap.nil?
       puts "There's no image."
     else
-      bitmap.matrix = Array.new(bitmap.row) { Array.new(bitmap.column, 'O') }
+      bitmap.reset
     end
   end
 end
