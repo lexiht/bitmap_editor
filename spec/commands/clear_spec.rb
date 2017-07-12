@@ -11,8 +11,7 @@ describe Clear do
 
     it 'reset the 2x2 matrix to original state' do
       old_matrix = Bitmap.new(2, 2)
-      old_matrix.matrix = [['C', 'C'], ['C', 'C'], ['C', 'C']]
-      # why does the test still work?
+      old_matrix.matrix = [['C', 'C'], ['C', 'C']]
       new_matrix = Bitmap.new(2, 2).matrix
       expect(described_class.apply([], old_matrix)).to eq(new_matrix)
     end
@@ -20,6 +19,11 @@ describe Clear do
     it 'outputs error message when bitmap is nil' do
       message = "There's no image.\n"
       expect { described_class.apply([], nil)}.to output(message).to_stdout
+    end
+
+    it 'raises an error when old and new matrix does not have the same dimension' do
+      bitmap = Bitmap.new(2, 2)
+      expect { bitmap.matrix = Bitmap.new(3,2).matrix }.to raise_error(RuntimeError, 'Matrix dimensions mismatch')
     end
   end
 end
