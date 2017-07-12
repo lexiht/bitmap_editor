@@ -1,12 +1,12 @@
 class Horizontal
   def self.apply(argument, bitmap)
-    x_min = argument[0]
-    x_max = argument[1]
-    y = argument[2]
+    column_min = argument[0] - 1
+    column_max = argument[1] - 1
+    row = argument[2] - 1
     colour = argument[3]
-    selected_row = bitmap.matrix[y - 1]
+    selected_row = bitmap.matrix[row]
     selected_row.each_with_index do |value, index|
-      if index >= x_min && index <= x_max
+      if index >= column_min && index <= column_max
         selected_row[index] = colour
       end
     end

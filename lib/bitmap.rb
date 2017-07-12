@@ -1,7 +1,7 @@
 require 'matrix'
 
 class Bitmap
-  attr_reader :column, :row, :matrix  
+  attr_reader :column, :row, :matrix
 
   def initialize(column, row)
     @column = column
@@ -12,11 +12,6 @@ class Bitmap
   def matrix=(new_matrix)
     raise RuntimeError, "Matrix dimensions mismatch" if dimensions != dimensions(new_matrix) && new_matrix.is_a?(Array)
     @matrix = new_matrix
-    self
-  end
-
-  def update_matrix(x,y,payload)
-    @matrix[y][x] = payload
     self
   end
 
