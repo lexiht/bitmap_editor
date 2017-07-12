@@ -20,7 +20,7 @@ class Vertical
         puts 'The y coordinate is out of range'
       else
         bitmap.matrix.each_with_index do |array, index|
-          array[column] = colour if index >= row_min && index <= row_max
+          array[column] = colour if (row_min..row_max).include?(index)
         end
       end
       bitmap
