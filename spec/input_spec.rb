@@ -13,8 +13,8 @@ describe Input do
       it 'returns the command from text file' do
         file_path = './spec/fixtures/test.txt'
         commands = {
-          'I'=> [5, 6] ,
-          'L'=> [1, 3, 'A'],
+          'I'=> [2, 2] ,
+          'L'=> [1, 1, 'A'],
           'S'=> []
         }
         expect(described_class.parse(file_path)).to eq(commands)
