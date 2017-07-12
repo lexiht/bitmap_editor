@@ -18,8 +18,14 @@ describe Colour do
 
     it 'outputs error message when no coordinate is provided' do
       old_matrix = Bitmap.new(1, 2)
-      message = "No coordinate is being provided\n"
+      message = "Invalid coordinate\n"
       expect { described_class.apply(['C'], old_matrix) }.to output(message).to_stdout
+    end
+
+    it 'outputs error message when coordinate is String' do
+      old_matrix = Bitmap.new(1, 2)
+      message = "Invalid coordinate\n"
+      expect { described_class.apply(['A','B','C'], old_matrix) }.to output(message).to_stdout
     end
   end
 end
