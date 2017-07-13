@@ -20,7 +20,7 @@ describe Create do
         expect { described_class.apply([], nil) }.to output(message).to_stdout
       end
 
-      it 'when argument is an array of String' do
+      it 'when argument is an array of not Integer' do
         message = "Wrong input [\"A\", \"B\"] after I\n"
         expect { described_class.apply(["A", "B"], nil) }.to output(message).to_stdout
       end

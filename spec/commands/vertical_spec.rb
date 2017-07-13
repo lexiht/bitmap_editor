@@ -23,7 +23,7 @@ describe Vertical do
       expect { described_class.apply([1, 1, 4, 'C'], old_bitmap) }.to output(message).to_stdout
     end
 
-    it 'outputs error message when y coordinate is String' do
+    it 'outputs error message when y coordinates are not Integer ' do
       old_bitmap = Bitmap.new(2, 3)
       message = "Invalid coordinate\n"
       expect { described_class.apply([1, 'A', 'B', 'C'], old_bitmap) }.to output(message).to_stdout

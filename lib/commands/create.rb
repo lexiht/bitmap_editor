@@ -1,6 +1,6 @@
 class Create
   def self.apply(argument, bitmap)
-    if argument.length != 2 || argument.any? { |e| e.is_a?(String) }
+    if argument.length != 2 || argument.any? { |e| !e.is_a?(Integer) }
       puts "Wrong input #{argument} after I"
     else
       column = argument[0]

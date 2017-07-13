@@ -26,7 +26,7 @@ describe Colour do
         expect { described_class.apply(['C'], old_bitmap) }.to output(message).to_stdout
       end
 
-      it 'outputs error message when coordinate is String' do
+      it 'outputs error message when coordinate is not Integer' do
         expect { described_class.apply(['A','B','C'], old_bitmap) }.to output(message).to_stdout
       end
 

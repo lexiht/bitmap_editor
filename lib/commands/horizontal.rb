@@ -1,7 +1,7 @@
 class Horizontal
   class << self
     def apply(argument, bitmap)
-      if argument[0...-1].any? { |e| e.is_a?(String) }
+      if argument[0...-1].any? { |e| !e.is_a?(Integer) }
         puts 'Invalid coordinate'
       else
         column_min = argument[0] - 1
