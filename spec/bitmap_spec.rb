@@ -17,4 +17,15 @@ describe Bitmap do
       expect(bitmap2x3.reset).to eq(new_matrix)
     end
   end
+
+  describe '#==' do
+    it 'not equals when 2 matrices are not the same side' do
+      expect(bitmap2x2).not_to eq(bitmap2x3)
+    end
+
+    it 'equals when 2 matrices are the same side' do
+      new_bitmap = Bitmap.new(2, 2)
+      expect(bitmap2x2).to eq(new_bitmap)
+    end
+  end
 end
