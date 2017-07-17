@@ -1,9 +1,11 @@
 class Clear
-  def self.apply(argument, bitmap)
-    if bitmap.nil?
-      puts "There's no image."
-    else
+  class << self
+    def apply(argument, bitmap)
       bitmap.reset
+    end
+
+    def valid?(argument, bitmap)
+      return false if bitmap.nil?
     end
   end
 end

@@ -27,7 +27,7 @@ class BitmapEditor
       if bitmap.nil? && command != 'I'
         puts !@commands[command].nil? ? "There's no image" : "Invalid command"
       elsif !@commands[command].valid?(argument, bitmap)
-        puts "Invalid argument #{argument} for #{command}"
+        puts "Invalid argument #{argument} or bitmap #{bitmap} for #{command}"
       else
         bitmap = @commands[command].apply(argument, bitmap)
       end

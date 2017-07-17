@@ -1,4 +1,5 @@
 require './lib/commands/clear.rb'
+require './lib/bitmap.rb'
 
 describe Clear do
   describe '.apply' do
@@ -9,9 +10,8 @@ describe Clear do
       expect(described_class.apply([], old_matrix)).to eq(new_bitmap)
     end
 
-    it 'outputs error message when bitmap is nil' do
-      message = "There's no image.\n"
-      expect { described_class.apply([], nil)}.to output(message).to_stdout
+    it 'returns false when bitmap is nil' do
+      expect(described_class.valid?([], nil)).to be false
     end
 
     it 'raises an error when old and new matrix does not have the same dimension' do

@@ -14,30 +14,25 @@ describe Create do
       expect(described_class.apply([3, 4], nil)).to eq(matrix)
     end
 
-    context 'outputs error message' do
+    context 'invalid argument returns false' do
       it 'when argument is an empty array' do
-        message = "Wrong input [] after I\n"
-        expect { described_class.apply([], nil) }.to output(message).to_stdout
+        expect(described_class.valid?([], nil)).to be false
       end
 
       it 'when argument is an array of not Integer' do
-        message = "Wrong input [\"A\", \"B\"] after I\n"
-        expect { described_class.apply(["A", "B"], nil) }.to output(message).to_stdout
+        expect(described_class.valid?(["A", "B"], nil)).to be false
       end
 
       it 'when argument is the right length' do
-        message = "Wrong input [3] after I\n"
-        expect { described_class.apply([3], nil) }.to output(message).to_stdout
+        expect(described_class.valid?([3], nil)).to be false
       end
 
       it 'when column is out of range' do
-        message = "Input needs to be between 1 and 250 after I\n"
-        expect { described_class.apply([251, 1], nil) }.to output(message).to_stdout
+        expect(described_class.valid?([251, 1], nil)).to be false
       end
 
       it 'when row is out of range' do
-        message = "Input needs to be between 1 and 250 after I\n"
-        expect { described_class.apply([1, 251], nil) }.to output(message).to_stdout
+        expect(described_class.valid?([1, 251], nil)).to be false
       end
     end
   end
