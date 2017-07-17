@@ -12,6 +12,7 @@ class Horizontal
       column_min, column_max, row, colour = argument
       return false if argument[0...-1].any? { |e| !e.is_a?(Integer) }
       return false if column_min < 1 || column_max > bitmap.column
+      true
     end
 
     private

@@ -19,25 +19,21 @@ describe Colour do
       end
     end
 
-    context 'incorrect coordinate' do
-      message = "Invalid coordinate\n"
-
-      it 'outputs error message when no coordinate is provided' do
-        expect { described_class.apply(['C'], old_bitmap) }.to output(message).to_stdout
+    context 'invalid argument returns false' do
+      it 'when no coordinate is provided' do
+        expect(described_class.valid?(['C'], old_bitmap)).to be false
       end
 
-      it 'outputs error message when coordinate is not Integer' do
-        expect { described_class.apply(['A','B','C'], old_bitmap) }.to output(message).to_stdout
+      it 'when coordinate is not Integer' do
+        expect(described_class.valid?(['A','B','C'], old_bitmap)).to be false
       end
 
-      it 'outputs error message when coordinate is out of range' do
-        message = "Coordinate is out of range\n"
-        expect { described_class.apply([3, 4,'C'], old_bitmap) }.to output(message).to_stdout
+      it 'when coordinate is out of range' do
+        expect(described_class.valid?([3, 4,'C'], old_bitmap)).to be false
       end
 
-      it 'outputs error message when coordinate is 0' do
-        message = "Coordinate is out of range\n"
-        expect { described_class.apply([0, 0,'C'], old_bitmap) }.to output(message).to_stdout
+      it 'when coordinate is 0' do
+        expect(described_class.valid?([0, 0,'C'], old_bitmap)).to be false
       end
     end
   end

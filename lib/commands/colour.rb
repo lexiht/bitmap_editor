@@ -1,16 +1,18 @@
 class Colour
-  def self.apply(argument, bitmap)
-    column, row = argument
-    if argument.size != 3 || argument[0...-1].any? { |e| !e.is_a?(Integer) }
-      puts 'Invalid coordinate'
-    elsif !(1..bitmap.column).include?(column) || !(1..bitmap.row).include?(row)
-      puts 'Coordinate is out of range'
-    else
+  class << self
+    def apply(argument, bitmap)
+      column, row, colour = argument
       column -= 1
       row -= 1
-      colour = argument[2]
       bitmap.matrix[row][column] = colour
+      bitmap
     end
-    bitmap
+
+    def valid?(argument, bitmap)
+      column, row, colour = argument
+      return false if argument.size != 3 || argument[0...-1].any? { |e| !e.is_a?(Integer) }
+      return false if !(1..bitmap.column).include?(column) || !(1..bitmap.row).include?(row)
+      true
+    end
   end
 end

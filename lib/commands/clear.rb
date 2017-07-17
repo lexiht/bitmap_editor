@@ -6,6 +6,7 @@ class Clear
 
     def valid?(argument, bitmap)
       return false if bitmap.nil?
+      true
     end
   end
 end
