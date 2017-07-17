@@ -1,13 +1,18 @@
 class Vertical
   class << self
     def apply(argument, bitmap)
+      column = argument[0]
+      row_min = argument[1]
+      row_max = argument[2]
+      colour = argument[-1]
       if argument[0...-1].any? { |e| !e.is_a?(Integer) }
         puts 'Invalid coordinate'
+      elsif row_min < 1 || row_max > bitmap.row
+        puts 'The y coordinate is out of range'
       else
-        column = argument[0] - 1
-        row_min = argument[1] - 1
-        row_max = argument[2] - 1
-        colour = argument[-1]
+        column -= 1
+        row_min -= 1
+        row_max -= 1
         draw_vertical(column, row_min, row_max, colour, bitmap)
       end
       bitmap
@@ -16,12 +21,8 @@ class Vertical
     private
 
     def draw_vertical(column, row_min, row_max, colour, bitmap)
-      if row_min < 0 || row_max + 1 > bitmap.row
-        puts 'The y coordinate is out of range'
-      else
-        bitmap.matrix.each_with_index do |array, index|
-          array[column] = colour if (row_min..row_max).include?(index)
-        end
+      bitmap.matrix.each_with_index do |array, index|
+        array[column] = colour if (row_min..row_max).include?(index)
       end
       bitmap
     end

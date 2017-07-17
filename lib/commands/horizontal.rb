@@ -21,10 +21,10 @@ class Horizontal
     private
 
     def draw_horizontal(column_min, column_max, row, colour, bitmap)
-        selected_row = bitmap.matrix[row]
-        selected_row.each_with_index do |value, index|
-          selected_row[index] = colour if (column_min..column_max).include?(index)
-        end
+      selected_row = bitmap.matrix[row]
+      selected_row.each_with_index do |value, index|
+        selected_row[index] = colour if (column_min..column_max).include?(index)
+      end
       bitmap
     end
   end
