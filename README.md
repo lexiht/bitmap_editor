@@ -10,9 +10,13 @@ Produce a Ruby 2.3 program that simulates a basic interactive bitmap editor. Bit
 
 ## Approach
 
-* Since the bitmap editor support multiple commands, it makes sense to apply the strategy pattern to allow for easy extensibility should you need to in future.
-* A way of applying strategy pattern here is to have each command in its own singleton class because those commands(strategies) are solving the same problem in different way, depending on the conditions. Why singleton? Because it does not need to be instantiate.
+* Since the bitmap editor supports multiple commands, it makes sense to apply the strategy pattern vs a `Command` class that contains all the supported commands as methods because this violates SRP or having switch case for each supported command to be excecutes based on the case.
+* Each supported command is in its own singleton class because those commands(strategies) are solving the same problem in different way, depending on the conditions. They are excuted in `BitmapEditor` class only when the right corresponding key is provided in `show.txt`. (Why singleton? Because it does not need to be instantiate).
 * I choose to store the commands in a hash so I can use the key(main operator) to access the instructions (coordinates + colour).
+* To ensure the program fails gracefully and outputs helpful messages, I added a few arguments verifications such as `check when coordinate is not integer`, `wrong number of argument provided` and `when coordinate is out of range`.
+
+### Other edge cases to consider
+* When arguments of create image command are negative integers. Although it's safe to assume that they're going to be positive since documentation says `Bitmaps starts at coordinates 1,1` but maybe an output error message would be helpful for users.
 
 ## Supported Commands
  | Command    | Description |
