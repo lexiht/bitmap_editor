@@ -21,8 +21,7 @@ class Bitmap
   end
 
   def reset
-    matrix = Array.new(row) { Array.new(column, 'O') }
-    self
+    Bitmap.new(column, row)
   end
 
   private

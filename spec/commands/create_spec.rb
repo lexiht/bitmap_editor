@@ -29,6 +29,16 @@ describe Create do
         message = "Wrong input [3] after I\n"
         expect { described_class.apply([3], nil) }.to output(message).to_stdout
       end
+
+      it 'when column is out of range' do
+        message = "Input needs to be between 1 and 250 after I\n"
+        expect { described_class.apply([251, 1], nil) }.to output(message).to_stdout
+      end
+
+      it 'when row is out of range' do
+        message = "Input needs to be between 1 and 250 after I\n"
+        expect { described_class.apply([1, 251], nil) }.to output(message).to_stdout
+      end
     end
   end
 end

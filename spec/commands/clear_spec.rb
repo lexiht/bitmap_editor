@@ -5,8 +5,8 @@ describe Clear do
     it 'reset the 1x1 matrix to original state' do
       old_matrix = Bitmap.new(1, 1)
       old_matrix.matrix = [['C']]
-      new_matrix = Bitmap.new(1, 1).matrix
-      expect(described_class.apply([], old_matrix)).to eq(new_matrix)
+      new_bitmap = Bitmap.new(1, 1)
+      expect(described_class.apply([], old_matrix)).to eq(new_bitmap)
     end
 
     it 'outputs error message when bitmap is nil' do
