@@ -6,7 +6,6 @@ class Vertical
       row_min -= 1
       row_max -= 1
       draw_vertical(column, row_min, row_max, colour, bitmap)
-      bitmap
     end
 
     def valid?(argument, bitmap)

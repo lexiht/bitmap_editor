@@ -17,18 +17,18 @@ describe Vertical do
       expect(described_class.apply([1, 2, 3, 'C'], old_bitmap)).to eq(new_bitmap)
     end
 
-    context 'invalid argument' do
+    context 'invalid argument returns false' do
       it 'when y is out of range' do
         old_bitmap = Bitmap.new(2, 3)
         expect(described_class.valid?([1, 1, 4, 'C'], old_bitmap)).to be false
       end
 
-      it 'outputs error message when y is 0' do
+      it 'when y is 0' do
         old_bitmap = Bitmap.new(2, 3)
         expect(described_class.valid?([1, 0, 0, 'C'], old_bitmap)).to be false
       end
 
-      it 'outputs error message when y coordinates are not Integer ' do
+      it 'when y coordinates are not Integer ' do
         old_bitmap = Bitmap.new(2, 3)
         expect(described_class.valid?([1, 'A', 'B', 'C'], old_bitmap)).to be false
       end

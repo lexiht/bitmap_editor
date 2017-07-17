@@ -17,22 +17,21 @@ describe Horizontal do
       expect(described_class.apply([1, 2, 2, 'C'], old_bitmap)).to eq(new_bitmap)
     end
 
-    it 'outputs error message when x is out of range' do
-      old_bitmap = Bitmap.new(2, 3)
-      message = "The x coordinate is out of range\n"
-      expect { described_class.apply([4, 5, 1, 'C'], old_bitmap) }.to output(message).to_stdout
-    end
+    context 'invalid argument returns false' do
+      it 'when x is out of range' do
+        old_bitmap = Bitmap.new(2, 3)
+        expect(described_class.valid?([4, 5, 1, 'C'], old_bitmap)).to be false
+      end
 
-    it 'outputs error message when x is 0' do
-      old_bitmap = Bitmap.new(2, 3)
-      message = "The x coordinate is out of range\n"
-      expect { described_class.apply([0, 0, 1, 'C'], old_bitmap) }.to output(message).to_stdout
-    end
+      it 'when x is 0' do
+        old_bitmap = Bitmap.new(2, 3)
+        expect(described_class.valid?([0, 0, 1, 'C'], old_bitmap)).to be false
+      end
 
-    it 'outputs error message when x coordinates are not Integer' do
-      old_bitmap = Bitmap.new(2, 3)
-      message = "Invalid coordinate\n"
-      expect { described_class.apply([1, 'A', 'B', 'C'], old_bitmap) }.to output(message).to_stdout
+      it 'when x coordinates are not Integer' do
+        old_bitmap = Bitmap.new(2, 3)
+        expect(described_class.valid?([1, 'A', 'B', 'C'], old_bitmap)).to be false
+      end
     end
   end
 end
