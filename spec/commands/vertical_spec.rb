@@ -17,22 +17,21 @@ describe Vertical do
       expect(described_class.apply([1, 2, 3, 'C'], old_bitmap)).to eq(new_bitmap)
     end
 
-    it 'outputs error message when y is out of range' do
-      old_bitmap = Bitmap.new(2, 3)
-      message = "The y coordinate is out of range\n"
-      expect { described_class.apply([1, 1, 4, 'C'], old_bitmap) }.to output(message).to_stdout
-    end
+    context 'invalid argument' do
+      it 'when y is out of range' do
+        old_bitmap = Bitmap.new(2, 3)
+        expect(described_class.valid?([1, 1, 4, 'C'], old_bitmap)).to be false
+      end
 
-    it 'outputs error message when y is 0' do
-      old_bitmap = Bitmap.new(2, 3)
-      message = "The y coordinate is out of range\n"
-      expect { described_class.apply([1, 0, 0, 'C'], old_bitmap) }.to output(message).to_stdout
-    end
+      it 'outputs error message when y is 0' do
+        old_bitmap = Bitmap.new(2, 3)
+        expect(described_class.valid?([1, 0, 0, 'C'], old_bitmap)).to be false
+      end
 
-    it 'outputs error message when y coordinates are not Integer ' do
-      old_bitmap = Bitmap.new(2, 3)
-      message = "Invalid coordinate\n"
-      expect { described_class.apply([1, 'A', 'B', 'C'], old_bitmap) }.to output(message).to_stdout
+      it 'outputs error message when y coordinates are not Integer ' do
+        old_bitmap = Bitmap.new(2, 3)
+        expect(described_class.valid?([1, 'A', 'B', 'C'], old_bitmap)).to be false
+      end
     end
   end
 end
